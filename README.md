@@ -1,11 +1,6 @@
-# text-cnn [![hb-research](https://img.shields.io/badge/hb--research-experiment-green.svg?style=flat&colorA=448C57&colorB=555555)](https://github.com/hb-research)
+# Text CNN Using Tensorflow
 
 This code implements [Convolutional Neural Networks for Sentence Classification](http://arxiv.org/abs/1408.5882) models.
-
-- Figure 1: Illustration of a CNN architecture for sentence classification
-
-![figure-1](images/figure-1.png)
-
 
 ## Requirements
 
@@ -15,6 +10,8 @@ This code implements [Convolutional Neural Networks for Sentence Classification]
 - tqdm
 - requests
 - [Slack Incoming Webhook URL](https://my.slack.com/services/new/incoming-webhook/)
+
+All of these requirements are in the requirements .txt, therefore you can just run `pip` to install these. More on this later
 
 ## Project Structure
 
@@ -36,14 +33,6 @@ init Project by [hb-base](https://github.com/hb-research/hb-base)
 Reference : [hb-config](https://github.com/hb-research/hb-config), [Dataset](https://www.tensorflow.org/api_docs/python/tf/data/Dataset#from_generator), [experiments_fn](https://www.tensorflow.org/api_docs/python/tf/contrib/learn/Experiment), [EstimatorSpec](https://www.tensorflow.org/api_docs/python/tf/estimator/EstimatorSpec)
 
 - Dataset : [rt-polarity](https://github.com/yoonkim/CNN_sentence), [Sentiment Analysis on Movie Reviews](https://www.kaggle.com/c/sentiment-analysis-on-movie-reviews/data)
-
-## Todo
-
-- apply embed_type 
-	- CNN-rand
-	- CNN-static
-	- CNN-nonstatic
-	- CNN-multichannel
 
 ## Config
 
@@ -97,18 +86,19 @@ Install requirements.
 Then, prepare dataset and train it.
 
 ```
-sh prepare_kaggle_movie_reviews.sh
+chmod 755 scripts/prepare_kaggle_movie_reviews.sh
+sh scripts/prepare_kaggle_movie_reviews.sh
 python main.py --config kaggle_movie_review --mode train_and_evaluate
 ```
 
 After training, you can try typing the sentences what you want using `predict.py`.
 
-```python python predict.py --config rt-polarity```
+```python python predict.py --config kaggle_movie_review```
 
 Predict example
 
 ```
-python predict.py --config rt-polarity
+python predict.py --config kaggle_movie_review
 Setting max_seq_length to Config : 62
 load vocab ...
 Typing anything :)
@@ -118,37 +108,6 @@ Typing anything :)
 > bad
 0
 ```
-
-### Experiments modes
-
-:white_check_mark: : Working  
-:white_medium_small_square: : Not tested yet.
-
-- :white_check_mark: `evaluate` : Evaluate on the evaluation data.
-- :white_medium_small_square: `extend_train_hooks` : Extends the hooks for training.
-- :white_medium_small_square: `reset_export_strategies` : Resets the export strategies with the new_export_strategies.
-- :white_medium_small_square: `run_std_server` : Starts a TensorFlow server and joins the serving thread.
-- :white_medium_small_square: `test` : Tests training, evaluating and exporting the estimator for a single step.
-- :white_check_mark: `train` : Fit the estimator using the training data.
-- :white_check_mark: `train_and_evaluate` : Interleaves training and evaluation.
-
-
-### Tensorboard
-
-```tensorboard --logdir logs```
-
-- Category Color
-
-![category_image](images/category.png)
-
-- rt-polarity (binary classification)
-
-![images](images/rt-polarity_loss_and_accuracy.jpeg)
-
-- kaggle_movie_review (multiclass classification)
-
-![images](images/kaggle-loss_and_accuracy.jpg)
-
 
 ## Reference
 
