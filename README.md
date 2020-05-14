@@ -9,7 +9,6 @@ This code implements [Convolutional Neural Networks for Sentence Classification]
 - [hb-config](https://github.com/hb-research/hb-config) (Singleton Config)
 - tqdm
 - requests
-- [Slack Incoming Webhook URL](https://my.slack.com/services/new/incoming-webhook/)
 
 All of these requirements are in the requirements .txt, therefore you can just run `pip` to install these. More on this later
 
@@ -73,7 +72,7 @@ train:
   min_eval_frequency: 1000
   
 slack:
-  webhook_url: ""   # after training notify you using slack-webhook
+  webhook_url: ""   # unused for this project
 ```
 
 
