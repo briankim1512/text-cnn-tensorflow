@@ -25,11 +25,16 @@ To install requirements, simply run the following command within the project fol
 
 ## Usage
 
-Prepare dataset and train it. You can modify the config for the NN in `config` folder.
+To preprocess the dataset and train it. You can modify the config for the NN in `config` folder.
 
 ```
 chmod 755 scripts/prepare_kaggle_movie_reviews.sh
 sh scripts/prepare_kaggle_movie_reviews.sh
+```
+
+To train the CNN, run the following command
+
+```
 python main.py --config kaggle_movie_review --mode train_and_evaluate
 ```
 
