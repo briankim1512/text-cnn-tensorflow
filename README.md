@@ -7,6 +7,8 @@ This code implements [Convolutional Neural Networks for Sentence Classification]
 This CNN takes the review of something given by the user and tries to discern what rating follows the text.
 The returned rating depends on what the user trains the CNN on.
 
+[Original Repo](https://github.com/DongjunLee/text-cnn-tensorflow) by DongjunLee
+
 ## Requirements
 
 - Python 3.6
