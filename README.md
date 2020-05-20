@@ -21,7 +21,7 @@ The returned rating depends on what the user trains the CNN on.
 
 To install requirements, simply run the following command within the project folder
 
-```pip install -r requirements.txt```
+```conda install --file requirements.txt```
 
 ## Usage
 
