@@ -66,6 +66,25 @@ def get_rev_vocab(vocab):
         return None
     return {idx: key for key, idx in vocab.items()}
 
+def re_config(args):
+    # Model Re Config
+    if args.batchsize != 0:
+        Config.model.batch_size = args.batchsize
+    if args.embeddim != 0:
+        Config.model.embed_dim = args.embeddim
+    if args.numfilters != 0:
+        Config.model.num_filters = args.numfilters
+    if args.dropout != 0:
+        Config.model.dropout = args.dropout
+    # Train Re Config
+    if args.learnrate != 0:
+        Config.train.learning_rate = args.learnrate
+    if args.trainsteps != 0:
+        Config.train.train_steps = args.trainsteps
+    if args.savecheck != 0:
+        Config.train.save_checkpoints_steps = args.savecheck
+    if args.evalcheck != 0:
+        Config.train.min_eval_frequency = args.evalcheck
 
 def main(mode):
     params = tf.contrib.training.HParams(**Config.model.to_dict())
@@ -91,22 +110,22 @@ if __name__ == '__main__':
     parser.add_argument('--mode', type=str, default='train',
                         help='Mode (train/test/train_and_evaluate)')
     # Model Arguments
-    parser.add_argument('--batch-size', type=int, default=0,
+    parser.add_argument('--batchsize', type=int, default=0,
                         help="Batch size")
-    parser.add_argument('--embed-dim', type=int, default=0,
+    parser.add_argument('--embeddim', type=int, default=0,
                         help="Embedded dimensions")
-    parser.add_argument('--num-filters', type=int, default=0,
+    parser.add_argument('--numfilters', type=int, default=0,
                         help="Number of filters")
     parser.add_argument('--dropout', type=int, default=0,
                         help="Dropout rate")
     # Training Arguments
-    parser.add_argument('--learn-rate', type=int, default=0,
+    parser.add_argument('--learnrate', type=int, default=0,
                         help="Learn rate")
-    parser.add_argument('--train-steps', type=int, default=0,
+    parser.add_argument('--trainsteps', type=int, default=0,
                         help="Training steps")
-    parser.add_argument('--save-checkpoint', type=int, default=0,
+    parser.add_argument('--savecheck', type=int, default=0,
                         help="Number of steps before model is saved")
-    parser.add_argument('--eval-checkpoint', type=int, default=0,
+    parser.add_argument('--evalcheck', type=int, default=0,
                         help="Number of steps before model is evaluated")
     args = parser.parse_args()
 
@@ -114,6 +133,7 @@ if __name__ == '__main__':
 
     # Print Config setting
     Config(args.config)
+    re_config(args)
     print("Config: ", Config)
     if Config.get("description", None):
         print("Config Description")
@@ -123,4 +143,4 @@ if __name__ == '__main__':
     # After terminated Notification to Slack
     atexit.register(utils.send_message_to_slack, config_name=args.config)
 
-    main(args.mode)
+    main(args.mode, args)
