@@ -21,7 +21,10 @@ The returned rating depends on what the user trains the CNN on.
 
 To install requirements, simply run the following command within the project folder
 
-```conda install --file requirements.txt```
+```pip install -r requirements.txt```
+
+Although conda would have been preferred, conda unfortunately does not have a 1.4 version of tensorflow, 
+nor does it have hb_config. Pip will be used in this case.
 
 ## Usage
 

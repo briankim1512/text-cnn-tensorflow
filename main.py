@@ -143,4 +143,4 @@ if __name__ == '__main__':
     # After terminated Notification to Slack
     atexit.register(utils.send_message_to_slack, config_name=args.config)
 
-    main(args.mode, args)
+    main(args.mode)
