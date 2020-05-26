@@ -85,6 +85,8 @@ def re_config(args):
         Config.train.save_checkpoints_steps = args.savecheck
     if args.evalcheck != 0:
         Config.train.min_eval_frequency = args.evalcheck
+    if args.modeldir != "":
+        Config.train.model_dir = args.modeldir
 
 def main(mode):
     params = tf.contrib.training.HParams(**Config.model.to_dict())
@@ -127,6 +129,9 @@ if __name__ == '__main__':
                         help="Number of steps before model is saved")
     parser.add_argument('--evalcheck', type=int, default=0,
                         help="Number of steps before model is evaluated")
+    parser.add_argument('--modeldir', type=str, default="",
+                        help="Where to save the model")
+    
     args = parser.parse_args()
 
     tf.logging._logger.setLevel(logging.INFO)
