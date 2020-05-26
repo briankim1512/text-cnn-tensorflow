@@ -61,6 +61,31 @@ Typing anything :)
 
 ## Config
 
+Configuration can be done by passing the arguments through `main.py` or through configuring the config file within the `config` folder
+
+The arguments that can be passed to `main.py` are as follows
+
+```
+  --config CONFIG       config file name (default: config)
+  --mode MODE           Mode (train/test/train_and_evaluate) (default: train)
+  --batchsize BATCHSIZE
+                        Batch size (default: 0)
+  --embeddim EMBEDDIM   Embedded dimensions (default: 0)
+  --numfilters NUMFILTERS
+                        Number of filters (default: 0)
+  --dropout DROPOUT     Dropout rate (default: 0)
+  --learnrate LEARNRATE
+                        Learn rate (default: 0)
+  --trainsteps TRAINSTEPS
+                        Training steps (default: 0)
+  --savecheck SAVECHECK
+                        Number of steps before model is saved (default: 0)
+  --evalcheck EVALCHECK
+                        Number of steps before model is evaluated (default: 0)
+```
+
+The config files within the `config` folder follow this type of format
+
 example: kaggle\_movie\_review.yml
 
 ```yml
