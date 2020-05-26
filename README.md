@@ -88,6 +88,9 @@ The arguments that can be passed to `main.py` are as follows
                         Number of steps before model is evaluated (default: 0)
 ```
 
+### Note
+When the default value `0` is passed, the values for that respective setting will be taken from the config file instead. 
+
 The config files within the `config` folder follow this type of format
 
 example: kaggle\_movie\_review.yml
