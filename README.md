@@ -66,14 +66,18 @@ Configuration can be done by passing the arguments through `main.py` or through 
 The arguments that can be passed to `main.py` are as follows
 
 ```
-  --config CONFIG       config file name (default: config)
-  --mode MODE           Mode (train/test/train_and_evaluate) (default: train)
+  --config CONFIG       
+                        config file name (default: config)
+  --mode MODE           
+                        Mode (train/test/train_and_evaluate) (default: train)
   --batchsize BATCHSIZE
                         Batch size (default: 0)
-  --embeddim EMBEDDIM   Embedded dimensions (default: 0)
+  --embeddim EMBEDDIM   
+                        Embedded dimensions (default: 0)
   --numfilters NUMFILTERS
                         Number of filters (default: 0)
-  --dropout DROPOUT     Dropout rate (default: 0)
+  --dropout DROPOUT     
+                        Dropout rate (default: 0)
   --learnrate LEARNRATE
                         Learn rate (default: 0)
   --trainsteps TRAINSTEPS
