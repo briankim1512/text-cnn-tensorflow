@@ -84,12 +84,30 @@ def main(mode):
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser(
-                        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    # Basic Arguments
     parser.add_argument('--config', type=str, default='config',
                         help='config file name')
     parser.add_argument('--mode', type=str, default='train',
                         help='Mode (train/test/train_and_evaluate)')
+    # Model Arguments
+    parser.add_argument('--batch-size', type=int, default=0,
+                        help="Batch size")
+    parser.add_argument('--embed-dim', type=int, default=0,
+                        help="Embedded dimensions")
+    parser.add_argument('--num-filters', type=int, default=0,
+                        help="Number of filters")
+    parser.add_argument('--dropout', type=int, default=0,
+                        help="Dropout rate")
+    # Training Arguments
+    parser.add_argument('--learn-rate', type=int, default=0,
+                        help="Learn rate")
+    parser.add_argument('--train-steps', type=int, default=0,
+                        help="Training steps")
+    parser.add_argument('--save-checkpoint', type=int, default=0,
+                        help="Number of steps before model is saved")
+    parser.add_argument('--eval-checkpoint', type=int, default=0,
+                        help="Number of steps before model is evaluated")
     args = parser.parse_args()
 
     tf.logging._logger.setLevel(logging.INFO)
